@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  # theia
+  theia-full:
+    image: 'theiaide/theia-full:1.14.0'
+    networks:
+      - red
+    restart: always
+    ports:
+      - "3030:3000"
+    volumes:
+      - '/var/run/docker.sock:/tmp/docker.sock:ro'
+      - '$(pwd):/home/project:cached'
+
+networks:
+    red:
+    driver: bridge
